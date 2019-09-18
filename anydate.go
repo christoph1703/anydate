@@ -10,7 +10,8 @@ import (
 var (
 	dateFormats = []string{
 		"2.1.2006",
-		"2006-2-1",
+		"2006-1-2",
+		"2006.1.2",
 		"Jan 2, 2006",
 	}
 	monthNames = map[string]int{

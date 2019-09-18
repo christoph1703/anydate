@@ -121,15 +121,20 @@ Services subject to the reverse charge - VAT to be accounted for by the
 
 18. August 2010
 
+2018.9.23
+
+
+
 `
 	resultData = `2019-05-02
-2019-05-07
+2019-07-05
 2019-04-20
 2019-08-31
 2019-08-01
 2019-08-31
 2019-06-05
 2010-08-18
+2018-09-23
 `
 )
 
