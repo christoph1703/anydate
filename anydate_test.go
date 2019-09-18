@@ -124,6 +124,7 @@ Services subject to the reverse charge - VAT to be accounted for by the
 2018.9.23
 
 
+15 Februar 2014
 
 `
 	resultData = `2019-05-02
@@ -135,6 +136,7 @@ Services subject to the reverse charge - VAT to be accounted for by the
 2019-06-05
 2010-08-18
 2018-09-23
+2014-02-15
 `
 )
 

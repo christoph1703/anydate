@@ -99,11 +99,16 @@ func parseDate(s string) (time.Time, error) {
 			continue
 		}
 
-		if strings.HasSuffix(e, ".") {
+		if i >= 2000 {
+			// if it's 2000 or greater, it must be the year
+			year = i
+			continue
+		}
+
+		if strings.HasSuffix(e, ".") || i <= 31 {
 			// if it has a dot, it must be a day
 			day = i
-		} else {
-			year = i
+			continue
 		}
 	}
 
