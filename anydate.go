@@ -10,7 +10,7 @@ var (
 	dateFormats = []string{
 		"2.1.2006",
 		"2006-2-1",
-		"Jan 02, 2006",
+		"Jan 2, 2006",
 	}
 )
 
@@ -31,16 +31,16 @@ func Parse(s string) []time.Time {
 			continue
 		}
 
-		switch {
-		case len(e) == 4:
-			e = strings.Join(elements[i-2:i+1], " ")
+		for j := 0; j < i && j < 3; j++ {
+			e = strings.Join(elements[i-j:i+1], " ")
+			d, err := parseDate(e)
+			if err != nil {
+				continue
+			}
+			dates = append(dates, d)
+			break
 		}
 
-		d, err := parseDate(e)
-		if err != nil {
-			continue
-		}
-		dates = append(dates, d)
 	}
 
 	return dates

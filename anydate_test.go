@@ -105,6 +105,7 @@ Total in EUR
 Billing
 ID
 7552-2694-2285
+1020
 ..............................................................
 Domain
 name
@@ -122,6 +123,7 @@ Services subject to the reverse charge - VAT to be accounted for by the
 2019-05-07
 2019-04-20
 2019-08-31
+2019-08-01
 2019-08-31
 `
 )
