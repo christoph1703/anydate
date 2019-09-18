@@ -117,6 +117,9 @@ VAT (0%) €0.00
 Total in EUR €5.20
 Services subject to the reverse charge - VAT to be accounted for by the
  
+05. Jun 2019
+
+18. August 2010
 
 `
 	resultData = `2019-05-02
@@ -125,6 +128,8 @@ Services subject to the reverse charge - VAT to be accounted for by the
 2019-08-31
 2019-08-01
 2019-08-31
+2019-06-05
+2010-08-18
 `
 )
 

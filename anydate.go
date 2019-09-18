@@ -2,6 +2,7 @@ package anydate
 
 import (
 	"errors"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -11,6 +12,25 @@ var (
 		"2.1.2006",
 		"2006-2-1",
 		"Jan 2, 2006",
+	}
+	monthNames = map[string]int{
+		"jan": 1,
+		"jän": 1,
+		"feb": 2,
+		"mär": 3,
+		"mar": 3,
+		"apr": 4,
+		"mai": 5,
+		"may": 5,
+		"jun": 6,
+		"jul": 7,
+		"aug": 8,
+		"sep": 9,
+		"okt": 10,
+		"oct": 10,
+		"nov": 11,
+		"dez": 12,
+		"dec": 12,
 	}
 )
 
@@ -47,6 +67,7 @@ func Parse(s string) []time.Time {
 }
 
 func parseDate(s string) (time.Time, error) {
+	// try standard formats
 	for _, f := range dateFormats {
 		t, err := time.Parse(f, s)
 		if err == nil {
@@ -54,5 +75,39 @@ func parseDate(s string) (time.Time, error) {
 		}
 	}
 
-	return time.Now(), errors.New("could not read date")
+	// parse other formats
+	elements := strings.Fields(s)
+	if len(elements) != 3 {
+		return time.Now(), errors.New("could not read date")
+	}
+
+	month := -1
+	day := -1
+	year := -1
+
+	for _, e := range elements {
+		// parse number if it exists
+		i, err := strconv.Atoi(strings.TrimSuffix(e, "."))
+		if err != nil {
+			// if it's not a number, it might be a month name
+			for k, v := range monthNames {
+				if strings.Contains(strings.ToLower(e), k) {
+					month = v
+				}
+			}
+			continue
+		}
+
+		if strings.HasSuffix(e, ".") {
+			// if it has a dot, it must be a day
+			day = i
+		} else {
+			year = i
+		}
+	}
+
+	if day < 0 || month < 0 || year < 0 {
+		return time.Now(), errors.New("could not read date")
+	}
+	return time.Date(year, time.Month(month), day, 12, 0, 0, 0, time.Local), nil
 }
